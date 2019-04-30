@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.edu.web2.service.news.dao.NewsColumnMapper" >
+  <select id="getList" resultType="com.edu.web2.service.news.model.NewsColumn" parameterType="com.edu.web2.service.news.model.NewsColumn" >
+    select * from news_column
+    where 1=1
+    <if test="id != null" >
+      and id = #{id}
+    </if>
+    <if test="name != null" >
+      and name = #{name}
+    </if>
+    <if test="level != null" >
+      and level = #{level}
+    </if>
+    <if test="parentId != null" >
+      and parent_id = #{parentId}
+    </if>
+    <if test="createUserId != null" >
+      and create_user_id = #{createUserId}
+    </if>
+    <if test="createTime != null" >
+      and create_time = #{createTime}
+    </if>
+    <if test="updateUserId != null" >
+      and update_user_id = #{updateUserId}
+    </if>
+    <if test="updateTime != null" >
+      and update_time = #{updateTime}
+    </if>
+    <if test="type != null" >
+      and type = #{type}
+    </if>
+    <if test="link != null" >
+      and link = #{link}
+    </if>
+    <if test="sortIndex != null" >
+      and sort_index = #{sortIndex}
+    </if>
+    <if test="content != null" >
+      and content = #{content}
+    </if>
+    order by sort_index desc
+  </select>
+  
+  <select id="getSingle" resultType="com.edu.web2.service.news.model.NewsColumn" >
+    select * from news_column
+    where id = #{id}
+    limit 0,1
+  </select>
+  
+  <insert id="insert" parameterType="com.edu.web2.service.news.model.NewsColumn" >
+    insert into news_column
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="createUserId != null" >
+        create_user_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="link != null" >
+        link,
+      </if>
+      <if test="sortIndex != null" >
+        sort_index,
+      </if>
+      <if test="content != null" >
+        content
+      </if>
+    </trim>
+    <trim prefix="values(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id},
+      </if>
+      <if test="name != null" >
+        #{name},
+      </if>
+      <if test="level != null" >
+        #{level},
+      </if>
+      <if test="parentId != null" >
+        #{parentId},
+      </if>
+      <if test="createUserId != null" >
+        #{createUserId},
+      </if>
+      <if test="createTime != null" >
+        #{createTime},
+      </if>
+      <if test="updateUserId != null" >
+        #{updateUserId},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime},
+      </if>
+      <if test="type != null" >
+        #{type},
+      </if>
+      <if test="link != null" >
+        #{link},
+      </if>
+      <if test="sortIndex != null" >
+        #{sortIndex},
+      </if>
+      <if test="content != null" >
+        #{content}
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="update" parameterType="com.edu.web2.service.news.model.NewsColumn" >
+    update news_column
+    <set >
+      <if test="name != null" >
+        name = #{name},
+      </if>
+      <if test="level != null" >
+        level = #{level},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId},
+      </if>
+      <if test="createUserId != null" >
+        create_user_id = #{createUserId},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime},
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id = #{updateUserId},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime},
+      </if>
+      <if test="type != null" >
+        type = #{type},
+      </if>
+      <if test="link != null" >
+        link = #{link},
+      </if>
+       <if test="content != null" >
+        content = #{content},
+      </if>
+      <if test="sortIndex != null" >
+        sort_index = #{sortIndex}
+      </if>
+    </set>
+    where
+    id = #{id}
+  </update>
+  
+  <delete id="batchDelete" >
+    delete from news_column
+    where id in(
+    <foreach item="item" collection="list" separator="," >
+      #{item}
+    </foreach>
+    )
+  </delete>
+  
+  <select id="getListWithPage" resultType="com.edu.web2.service.news.model.NewsColumn" parameterType="com.edu.web2.service.news.model.NewsColumn" >
+    select * from news_column
+    where 1=1
+    <if test="id != null" >
+      and id = #{id}
+    </if>
+    <if test="name != null" >
+      and name = #{name}
+    </if>
+    <if test="level != null" >
+      and level = #{level}
+    </if>
+    <if test="parentId != null" >
+      and parent_id = #{parentId}
+    </if>
+    <if test="createUserId != null" >
+      and create_user_id = #{createUserId}
+    </if>
+    <if test="createTime != null" >
+      and create_time = #{createTime}
+    </if>
+    <if test="updateUserId != null" >
+      and update_user_id = #{updateUserId}
+    </if>
+    <if test="updateTime != null" >
+      and update_time = #{updateTime}
+    </if>
+    <if test="type != null" >
+      and type = #{type}
+    </if>
+    <if test="link != null" >
+      and link = #{link}
+    </if>
+    <if test="sortIndex != null" >
+      and sort_index = #{sortIndex}
+    </if>
+    <if test="content != null" >
+      and content = #{content}
+    </if>
+    order by sort_index desc
+  </select>
+  
+  <select id="count" resultType="java.lang.Long" parameterType="com.edu.web2.service.news.model.NewsColumn" >
+    select count(*) from news_column
+    where 1=1
+    <if test="id != null" >
+      and id = #{id}
+    </if>
+    <if test="name != null" >
+      and name = #{name}
+    </if>
+    <if test="level != null" >
+      and level = #{level}
+    </if>
+    <if test="parentId != null" >
+      and parent_id = #{parentId}
+    </if>
+    <if test="createUserId != null" >
+      and create_user_id = #{createUserId}
+    </if>
+    <if test="createTime != null" >
+      and create_time = #{createTime}
+    </if>
+    <if test="updateUserId != null" >
+      and update_user_id = #{updateUserId}
+    </if>
+    <if test="updateTime != null" >
+      and update_time = #{updateTime}
+    </if>
+    <if test="type != null" >
+      and type = #{type}
+    </if>
+    <if test="link != null" >
+      and link = #{link}
+    </if>
+    <if test="sortIndex != null" >
+      and sort_index = #{sortIndex}
+    </if>
+    <if test="content != null" >
+      and content = #{content}
+    </if>
+  </select>
+  
+</mapper>

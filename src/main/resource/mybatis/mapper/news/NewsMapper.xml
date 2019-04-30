@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.edu.web2.service.news.dao.NewsMapper" >
+  <select id="getList" resultType="com.edu.web2.service.news.model.News" parameterType="com.edu.web2.service.news.model.News" >
+    select * from news
+    where 1=1
+    <if test="id != null" >
+      and id = #{id}
+    </if>
+    <if test="title != null" >
+      and title like concat('%',#{title},'%')
+    </if>
+    <if test="author != null" >
+      and author = #{author}
+    </if>
+    <if test="createUserId != null" >
+      and create_user_id = #{createUserId}
+    </if>
+    <if test="createTime != null" >
+      and create_time = #{createTime}
+    </if>
+    <if test="updateUserId != null" >
+      and update_user_id = #{updateUserId}
+    </if>
+    <if test="updateTime != null" >
+      and update_time = #{updateTime}
+    </if>
+    <if test="publishTime != null" >
+      and publish_time = #{publishTime}
+    </if>
+    <if test="scanCount != null" >
+      and scan_count = #{scanCount}
+    </if>
+    <if test="type != null" >
+      and type = #{type}
+    </if>
+    <if test="link != null" >
+      and link = #{link}
+    </if>
+    <if test="previewPicUrl != null" >
+      and preview_pic_url = #{previewPicUrl}
+    </if>
+    <if test="shortContent != null" >
+      and short_content = #{shortContent}
+    </if>
+    <if test="newsColumnId != null" >
+      and news_column_id = #{newsColumnId}
+    </if>
+    <if test="content != null" >
+      and content = #{content}
+    </if>
+  </select>
+  
+  <select id="getSingle" resultType="com.edu.web2.service.news.model.News" >
+    select * from news
+    where id = #{id}
+    limit 0,1
+  </select>
+  
+  <insert id="insert" parameterType="com.edu.web2.service.news.model.News" >
+    insert into news
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="author != null" >
+        author,
+      </if>
+      <if test="createUserId != null" >
+        create_user_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="publishTime != null" >
+        publish_time,
+      </if>
+      <if test="scanCount != null" >
+        scan_count,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="link != null" >
+        link,
+      </if>
+      <if test="previewPicUrl != null" >
+        preview_pic_url,
+      </if>
+      <if test="shortContent != null" >
+        short_content,
+      </if>
+      <if test="newsColumnId != null" >
+        news_column_id,
+      </if>
+      <if test="content != null" >
+        content
+      </if>
+    </trim>
+    <trim prefix="values(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id},
+      </if>
+      <if test="title != null" >
+        #{title},
+      </if>
+      <if test="author != null" >
+        #{author},
+      </if>
+      <if test="createUserId != null" >
+        #{createUserId},
+      </if>
+      <if test="createTime != null" >
+        #{createTime},
+      </if>
+      <if test="updateUserId != null" >
+        #{updateUserId},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime},
+      </if>
+      <if test="publishTime != null" >
+        #{publishTime},
+      </if>
+      <if test="scanCount != null" >
+        #{scanCount},
+      </if>
+      <if test="type != null" >
+        #{type},
+      </if>
+      <if test="link != null" >
+        #{link},
+      </if>
+      <if test="previewPicUrl != null" >
+        #{previewPicUrl},
+      </if>
+      <if test="shortContent != null" >
+        #{shortContent},
+      </if>
+      <if test="newsColumnId != null" >
+        #{newsColumnId},
+      </if>
+      <if test="content != null" >
+        #{content}
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="update" parameterType="com.edu.web2.service.news.model.News" >
+    update news
+    <set >
+      <if test="title != null" >
+        title = #{title},
+      </if>
+      <if test="author != null" >
+        author = #{author},
+      </if>
+      <if test="createUserId != null" >
+        create_user_id = #{createUserId},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime},
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id = #{updateUserId},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime},
+      </if>
+      <if test="publishTime != null" >
+        publish_time = #{publishTime},
+      </if>
+      <if test="scanCount != null" >
+        scan_count = #{scanCount},
+      </if>
+      <if test="type != null" >
+        type = #{type},
+      </if>
+      <if test="link != null" >
+        link = #{link},
+      </if>
+      <if test="previewPicUrl != null" >
+        preview_pic_url = #{previewPicUrl},
+      </if>
+      <if test="shortContent != null" >
+        short_content = #{shortContent},
+      </if>
+       <if test="content != null" >
+        content = #{content},
+      </if>
+      <if test="newsColumnId != null" >
+        news_column_id = #{newsColumnId}
+      </if>
+    </set>
+    where
+    id = #{id}
+  </update>
+  
+  <delete id="batchDelete" >
+    delete from news
+    where id in(
+    <foreach item="item" collection="list" separator="," >
+      #{item}
+    </foreach>
+    )
+  </delete>
+  
+  <select id="getListWithPage" resultType="com.edu.web2.service.news.model.News" parameterType="com.edu.web2.service.news.model.News" >
+    select * from news
+    where 1=1
+    <if test="id != null" >
+      and id = #{id}
+    </if>
+    <if test="title != null" >
+      and  title like concat('%',#{title},'%')
+    </if>
+    <if test="author != null" >
+      and author = #{author}
+    </if>
+    <if test="createUserId != null" >
+      and create_user_id = #{createUserId}
+    </if>
+    <if test="createTime != null" >
+      and create_time = #{createTime}
+    </if>
+    <if test="updateUserId != null" >
+      and update_user_id = #{updateUserId}
+    </if>
+    <if test="updateTime != null" >
+      and update_time = #{updateTime}
+    </if>
+    <if test="publishTime != null" >
+      and publish_time = #{publishTime}
+    </if>
+    <if test="scanCount != null" >
+      and scan_count = #{scanCount}
+    </if>
+    <if test="type != null" >
+      and type = #{type}
+    </if>
+    <if test="link != null" >
+      and link = #{link}
+    </if>
+    <if test="previewPicUrl != null" >
+      and preview_pic_url = #{previewPicUrl}
+    </if>
+    <if test="shortContent != null" >
+      and short_content = #{shortContent}
+    </if>
+    <if test="newsColumnId != null" >
+      and news_column_id = #{newsColumnId}
+    </if>
+    <if test="content != null" >
+      and content = #{content}
+    </if>
+  </select>
+  
+  <select id="count" resultType="java.lang.Long" parameterType="com.edu.web2.service.news.model.News" >
+    select count(*) from news
+    where 1=1
+    <if test="id != null" >
+      and id = #{id}
+    </if>
+    <if test="title != null" >
+      and title = #{title}
+    </if>
+    <if test="author != null" >
+      and author = #{author}
+    </if>
+    <if test="createUserId != null" >
+      and create_user_id = #{createUserId}
+    </if>
+    <if test="createTime != null" >
+      and create_time = #{createTime}
+    </if>
+    <if test="updateUserId != null" >
+      and update_user_id = #{updateUserId}
+    </if>
+    <if test="updateTime != null" >
+      and update_time = #{updateTime}
+    </if>
+    <if test="publishTime != null" >
+      and publish_time = #{publishTime}
+    </if>
+    <if test="scanCount != null" >
+      and scan_count = #{scanCount}
+    </if>
+    <if test="type != null" >
+      and type = #{type}
+    </if>
+    <if test="link != null" >
+      and link = #{link}
+    </if>
+    <if test="previewPicUrl != null" >
+      and preview_pic_url = #{previewPicUrl}
+    </if>
+    <if test="shortContent != null" >
+      and short_content = #{shortContent}
+    </if>
+    <if test="newsColumnId != null" >
+      and news_column_id = #{newsColumnId}
+    </if>
+    <if test="content != null" >
+      and content = #{content}
+    </if>
+  </select>
+  
+  <select id="listByIds" resultType="com.edu.web2.service.news.model.News" parameterType="java.util.List">
+  	select * from news
+  	where id in
+  	<foreach collection="ids" item="id" open="(" close=")" separator="," >
+  		#{id}
+  	</foreach>
+  </select>
+  
+  <update id="batchUpdate" parameterType="java.util.List" >
+  	<foreach collection="list" item="item" separator=";">
+    update news
+    <set >
+      <if test="item.title != null" >
+        title = #{item.title},
+      </if>
+      <if test="item.author != null" >
+        author = #{item.author},
+      </if>
+      <if test="item.createUserId != null" >
+        create_user_id = #{item.createUserId},
+      </if>
+      <if test="item.createTime != null" >
+        create_time = #{item.createTime},
+      </if>
+      <if test="item.updateUserId != null" >
+        update_user_id = #{item.updateUserId},
+      </if>
+      <if test="item.updateTime != null" >
+        update_time = #{item.updateTime},
+      </if>
+      <if test="item.publishTime != null" >
+        publish_time = #{item.publishTime},
+      </if>
+      <if test="item.scanCount != null" >
+        scan_count = #{item.scanCount},
+      </if>
+      <if test="item.type != null" >
+        type = #{item.type},
+      </if>
+      <if test="item.link != null" >
+        link = #{item.link},
+      </if>
+      <if test="item.previewPicUrl != null" >
+        preview_pic_url = #{item.previewPicUrl},
+      </if>
+      <if test="item.columnId != null" >
+        column_id = #{item.columnId}
+      </if>
+    </set>
+    where
+    id = #{item.id}
+    </foreach>
+  </update>
+</mapper>

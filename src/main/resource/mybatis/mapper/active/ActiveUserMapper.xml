@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.edu.web2.service.active.dao.ActiveUserMapper" >
+  <select id="getList" resultType="com.edu.web2.service.active.model.ActiveUser" parameterType="com.edu.web2.service.active.model.ActiveUser" >
+    select * from active_user
+    where 1=1
+    <if test="id != null" >
+      and id = #{id}
+    </if>
+    <if test="userRealname != null" >
+      and user_realname = #{userRealname}
+    </if>
+    <if test="activeId != null" >
+      and active_id = #{activeId}
+    </if>
+    <if test="createUserId != null" >
+      and create_user_id = #{createUserId}
+    </if>
+    <if test="createTime != null" >
+      and create_time = #{createTime}
+    </if>
+    <if test="updateUserId != null" >
+      and update_user_id = #{updateUserId}
+    </if>
+    <if test="updateTime != null" >
+      and update_time = #{updateTime}
+    </if>
+    <if test="phone != null" >
+      and phone = #{phone}
+    </if>
+    <if test="studentCode != null" >
+      and student_code = #{studentCode}
+    </if>
+  </select>
+  
+  <select id="getSingle" resultType="com.edu.web2.service.active.model.ActiveUser" >
+    select * from active_user
+    where id = #{id}
+    limit 0,1
+  </select>
+  
+  <insert id="insert" parameterType="com.edu.web2.service.active.model.ActiveUser" >
+    insert into active_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userRealname != null" >
+        user_realname,
+      </if>
+      <if test="activeId != null" >
+        active_id,
+      </if>
+      <if test="createUserId != null" >
+        create_user_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="studentCode != null" >
+        student_code
+      </if>
+    </trim>
+    <trim prefix="values(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id},
+      </if>
+      <if test="userRealname != null" >
+        #{userRealname},
+      </if>
+      <if test="activeId != null" >
+        #{activeId},
+      </if>
+      <if test="createUserId != null" >
+        #{createUserId},
+      </if>
+      <if test="createTime != null" >
+        #{createTime},
+      </if>
+      <if test="updateUserId != null" >
+        #{updateUserId},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime},
+      </if>
+      <if test="phone != null" >
+        #{phone},
+      </if>
+      <if test="studentCode != null" >
+        #{studentCode}
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="update" parameterType="com.edu.web2.service.active.model.ActiveUser" >
+    update active_user
+    <set >
+      <if test="userRealname != null" >
+        user_realname = #{userRealname},
+      </if>
+      <if test="activeId != null" >
+        active_id = #{activeId},
+      </if>
+      <if test="createUserId != null" >
+        create_user_id = #{createUserId},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime},
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id = #{updateUserId},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone},
+      </if>
+      <if test="studentCode != null" >
+        student_code = #{studentCode}
+      </if>
+    </set>
+    where
+    id = #{id}
+  </update>
+  
+  <delete id="batchDelete" >
+    delete from active_user
+    where id in(
+    <foreach item="item" collection="list" separator="," >
+      #{item}
+    </foreach>
+    )
+  </delete>
+  
+  <select id="getListWithPage" resultType="com.edu.web2.service.active.model.ActiveUser" parameterType="com.edu.web2.service.active.model.ActiveUser" >
+    select * from active_user
+    where 1=1
+    <if test="id != null" >
+      and id = #{id}
+    </if>
+    <if test="userRealname != null" >
+      and user_realname = #{userRealname}
+    </if>
+    <if test="activeId != null" >
+      and active_id = #{activeId}
+    </if>
+    <if test="createUserId != null" >
+      and create_user_id = #{createUserId}
+    </if>
+    <if test="createTime != null" >
+      and create_time = #{createTime}
+    </if>
+    <if test="updateUserId != null" >
+      and update_user_id = #{updateUserId}
+    </if>
+    <if test="updateTime != null" >
+      and update_time = #{updateTime}
+    </if>
+    <if test="phone != null" >
+      and phone = #{phone}
+    </if>
+    <if test="studentCode != null" >
+      and student_code = #{studentCode}
+    </if>
+  </select>
+  
+  <select id="count" resultType="java.lang.Long" parameterType="com.edu.web2.service.active.model.ActiveUser" >
+    select count(*) from active_user
+    where 1=1
+    <if test="id != null" >
+      and id = #{id}
+    </if>
+    <if test="userRealname != null" >
+      and user_realname = #{userRealname}
+    </if>
+    <if test="activeId != null" >
+      and active_id = #{activeId}
+    </if>
+    <if test="createUserId != null" >
+      and create_user_id = #{createUserId}
+    </if>
+    <if test="createTime != null" >
+      and create_time = #{createTime}
+    </if>
+    <if test="updateUserId != null" >
+      and update_user_id = #{updateUserId}
+    </if>
+    <if test="updateTime != null" >
+      and update_time = #{updateTime}
+    </if>
+    <if test="phone != null" >
+      and phone = #{phone}
+    </if>
+    <if test="studentCode != null" >
+      and student_code = #{studentCode}
+    </if>
+  </select>
+  
+</mapper>

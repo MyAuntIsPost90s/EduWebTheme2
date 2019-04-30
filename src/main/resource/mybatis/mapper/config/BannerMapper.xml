@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.edu.web2.service.config.dao.BannerMapper" >
+  <select id="getList" resultType="com.edu.web2.service.config.model.Banner" parameterType="com.edu.web2.service.config.model.Banner" >
+    select * from banner
+    where 1=1
+    <if test="id != null" >
+      and id = #{id}
+    </if>
+    <if test="name != null" >
+      and name = #{name}
+    </if>
+    <if test="picUrl != null" >
+      and pic_url = #{picUrl}
+    </if>
+    <if test="createUserId != null" >
+      and create_user_id = #{createUserId}
+    </if>
+    <if test="createTime != null" >
+      and create_time = #{createTime}
+    </if>
+    <if test="updateUserId != null" >
+      and update_user_id = #{updateUserId}
+    </if>
+    <if test="updateTime != null" >
+      and update_time = #{updateTime}
+    </if>
+    <if test="sortIndex != null" >
+      and sort_index = #{sortIndex}
+    </if>
+    <if test="link != null" >
+      and link = #{link}
+    </if>
+  </select>
+  
+  <select id="getSingle" resultType="com.edu.web2.service.config.model.Banner" >
+    select * from banner
+    where id = #{id}
+    limit 0,1
+  </select>
+  
+  <insert id="insert" parameterType="com.edu.web2.service.config.model.Banner" >
+    insert into banner
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="picUrl != null" >
+        pic_url,
+      </if>
+      <if test="createUserId != null" >
+        create_user_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="sortIndex != null" >
+        sort_index,
+      </if>
+      <if test="link != null" >
+        link
+      </if>
+    </trim>
+    <trim prefix="values(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id},
+      </if>
+      <if test="name != null" >
+        #{name},
+      </if>
+      <if test="picUrl != null" >
+        #{picUrl},
+      </if>
+      <if test="createUserId != null" >
+        #{createUserId},
+      </if>
+      <if test="createTime != null" >
+        #{createTime},
+      </if>
+      <if test="updateUserId != null" >
+        #{updateUserId},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime},
+      </if>
+      <if test="sortIndex != null" >
+        #{sortIndex},
+      </if>
+      <if test="link != null" >
+        #{link}
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="update" parameterType="com.edu.web2.service.config.model.Banner" >
+    update banner
+    <set >
+      <if test="name != null" >
+        name = #{name},
+      </if>
+      <if test="picUrl != null" >
+        pic_url = #{picUrl},
+      </if>
+      <if test="createUserId != null" >
+        create_user_id = #{createUserId},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime},
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id = #{updateUserId},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime},
+      </if>
+      <if test="sortIndex != null" >
+        sort_index = #{sortIndex},
+      </if>
+      <if test="link != null" >
+        link = #{link}
+      </if>
+    </set>
+    where
+    id = #{id}
+  </update>
+  
+  <delete id="batchDelete" >
+    delete from banner
+    where id in(
+    <foreach item="item" collection="list" separator="," >
+      #{item}
+    </foreach>
+    )
+  </delete>
+  
+  <select id="getListWithPage" resultType="com.edu.web2.service.config.model.Banner" parameterType="com.edu.web2.service.config.model.Banner" >
+    select * from banner
+    where 1=1
+    <if test="id != null" >
+      and id = #{id}
+    </if>
+    <if test="name != null" >
+      and name = #{name}
+    </if>
+    <if test="picUrl != null" >
+      and pic_url = #{picUrl}
+    </if>
+    <if test="createUserId != null" >
+      and create_user_id = #{createUserId}
+    </if>
+    <if test="createTime != null" >
+      and create_time = #{createTime}
+    </if>
+    <if test="updateUserId != null" >
+      and update_user_id = #{updateUserId}
+    </if>
+    <if test="updateTime != null" >
+      and update_time = #{updateTime}
+    </if>
+    <if test="sortIndex != null" >
+      and sort_index = #{sortIndex}
+    </if>
+    <if test="link != null" >
+      and link = #{link}
+    </if>
+  </select>
+  
+  <select id="count" resultType="java.lang.Long" parameterType="com.edu.web2.service.config.model.Banner" >
+    select count(*) from banner
+    where 1=1
+    <if test="id != null" >
+      and id = #{id}
+    </if>
+    <if test="name != null" >
+      and name = #{name}
+    </if>
+    <if test="picUrl != null" >
+      and pic_url = #{picUrl}
+    </if>
+    <if test="createUserId != null" >
+      and create_user_id = #{createUserId}
+    </if>
+    <if test="createTime != null" >
+      and create_time = #{createTime}
+    </if>
+    <if test="updateUserId != null" >
+      and update_user_id = #{updateUserId}
+    </if>
+    <if test="updateTime != null" >
+      and update_time = #{updateTime}
+    </if>
+    <if test="sortIndex != null" >
+      and sort_index = #{sortIndex}
+    </if>
+    <if test="link != null" >
+      and link = #{link}
+    </if>
+  </select>
+  
+</mapper>
